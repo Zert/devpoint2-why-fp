@@ -63,17 +63,32 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Неизменяемое состояние}
+  \begin{minipage}[t]{90px}
+    Императивный код
+    \includegraphics[height=7cm]{nag_08.png}
+  \end{minipage}
+  \pause
+  \hfill
+  \begin{minipage}[t]{140px}
+    Функциональный код\hfill
+    \includegraphics[height=7cm]{sks_ok.png}
+  \end{minipage}
+\end{frame}
+
 
 \begin{frame}[fragile]
   \frametitle{Хвостовая рекурсия}
   \begin{block}{}
-\begin{verbatim}
-State = {inc:integer = 0}
+    \texttt{State = \{inc:{\color{magenta}integer} = 0\}}
+    \pause
 
-iterate(State) ->
-    NewState = State{inc + 5}
-    iterate(NewState)
-\end{verbatim}
+    \texttt{{\color{blue}iterate}(State) ->}
+
+    \verb+    +\texttt{NewState = State\{inc + 5\}}
+
+    \verb+    +\texttt{{\color{blue}iterate}(NewState)}
   \end{block}
 
 \end{frame}
@@ -105,8 +120,6 @@ iterate(State) ->
 
 \begin{frame}
   \frametitle{Xzibited выполнение рекурсии}
-  Транслятор преобразует хвостовую рекурсию в итерацию!
-  \pause
   \begin{itemize}
   \item Записали на стек адрес, куда надо вернуться
     \pause
@@ -150,9 +163,16 @@ iterate(State) ->
   \end{block}
 \end{frame}
 
+
 \begin{frame}[fragile]
   \frametitle{Замыкания}
-  \pause
+  \begin{center}
+    \includegraphics[height=7cm]{kz.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Замыкания}
   На vasya@pupkin:
 
   \begin{block}{}
