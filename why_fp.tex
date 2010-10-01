@@ -63,6 +63,60 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Неизменяемое состояние}
+  \begin{minipage}[t]{130px}
+    Функция с побочными действиями
+    \begin{block}{}
+      \texttt{shared = 5}
+
+      \texttt{{\color{magenta}def} {\color{blue}dirty}(x):}
+
+      \verb+    +\texttt{{\color{magenta}global} shared}
+
+      \verb+    +\texttt{shared = shared + x}
+
+      \verb+    +\texttt{{\color{magenta}return} shared}
+
+    \end{block}
+    \pause
+    \begin{block}{}
+\begin{verbatim}
+>>> dirty(1)
+6
+>>> dirty(1)
+7
+>>> dirty(1)
+8
+\end{verbatim}
+    \end{block}
+  \end{minipage}
+  \pause
+  \hfill
+  \begin{minipage}[t]{130px}
+    Функция без побочных действий
+    \begin{block}{}
+      \texttt{{\color{magenta}def} {\color{blue}pure}(x):}
+
+      \verb+    +\texttt{{\color{magenta}return} (x + 5)}
+
+    \end{block}
+
+    \begin{block}{}
+\begin{verbatim}
+>>> pure(1)
+6
+>>> pure(1)
+6
+>>> pure(1)
+6
+\end{verbatim}
+    \end{block}
+
+  \end{minipage}
+
+\end{frame}
+
 \begin{frame}
   \frametitle{Неизменяемое состояние}
   \begin{minipage}[t]{90px}
